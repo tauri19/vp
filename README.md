@@ -49,3 +49,7 @@ git status
 git add .  ( . tähendab et trackib kõikke, kui ei taha mõnda vaadata siis tuleb git add "nimi")
 
 git commit -m "teise tunni failid siiamaani"
+
+
+
+NOTA FUCKING BENE!!!!!! faili nimedesse ei tohi tühikuid teha. see tekitab probleeme! 
