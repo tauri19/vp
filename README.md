@@ -26,5 +26,5 @@ github
 
 ssh greeny.cs.tlu.ee -l tauri või ssh tauri@greeny.cs.tlu.ee
 
-cd public_html ja siis cd main
-või siis cd public_html/main
+cd public_html ja siis cd vp
+või siis cd public_html/vp
