@@ -43,3 +43,9 @@ git config user.email gittauri19@users.noreply.github.com (git(git kontonimi)@us
 
 testmiseks --> git config user.email
 
+
+git status
+
+git add .  ( . tähendab et trackib kõikke, kui ei taha mõnda vaadata siis tuleb git add "nimi")
+
+git commit -m "teise tunni failid siiamaani"
