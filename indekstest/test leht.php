@@ -11,6 +11,21 @@ if($hournow < 7){
 if($hournow >= 8 and $hournow <= 23){
 	$partofday = " aeg töötamiseks";
 }
+// see märk näitab kommentaari "//"
+//vaatame semsetri kulgemist
+$semesterstart = new DateTime ("2020-8-31");
+$semesterend = new DateTime ("2020-12-13");
+//selgitame välja nende vahe ehk erinevuse
+$semesterduration = $semesterstart->diff($semesterend);
+//leiame selle päevade arvuna
+$semesterdurationdays = $semesterduration->format("%r%a");
+//tänane päev
+$today = new DateTime ("now");
+//tänase ja semestri erinevus jne jne 
+//kui aga päevade arv on miinuses siis näiteks: if($fromsemesterstartdays < 0){semester pole alanud}
+//veelgi if ($semesteridurationdays > $semesterduration){"semester on läbi, naudi vaba aega."}
+ 
+
 ?>
 
 <!DOCTYPE html>
