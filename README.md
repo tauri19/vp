@@ -32,3 +32,14 @@ või siis cd public_html/vp
 
 librarist välja minemiseks töötab cd .. 
 
+
+git config user.name "Eesnimi Perekonnanimi" (ehk tauri ramst)
+
+kodus tehes --> git config --global user.name "Eesnimi Perekonnanimi"
+
+testimiseks --> git config user.name
+
+git config user.email gittauri19@users.noreply.github.com (git(git kontonimi)@users.noreply.github.com)
+
+testmiseks --> git config user.email
+
