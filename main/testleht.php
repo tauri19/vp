@@ -5,6 +5,8 @@ $username2 = "test";
 $fulltimenow = date("d.m.Y H:i:s");
 $hournow = date("H:i");
 $partofday = " lihtsalt aeg";
+$weekdaynameset = ["esmaspäev", "teisipäev", "kolmapäev", "neljapäev", "reede", "laupäev", "pühapäev"];
+  $monthnameset = ["jaanuar", "veebruar", "märts", "aprill", "mai", "juuni", "juuli", "august", "september", "oktoober", "november", "detsember"];
 if($hournow < 6){
 	$partofday = "uneaeg";	
 }
@@ -67,6 +69,7 @@ if($semesterstart > $today){
   if($fromsemesterstartdays > $semesterdurationdays){
 	  $semesterinfo = "Semester on läbi saanud!";
   }
+  
 ?>
 
 <!DOCTYPE html>
