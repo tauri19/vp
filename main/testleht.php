@@ -5,11 +5,23 @@ $username2 = "test";
 $fulltimenow = date("d.m.Y H:i:s");
 $hournow = date("H:i");
 $partofday = " lihtsalt aeg";
-if($hournow < 7){
+if($hournow < 6){
 	$partofday = "uneaeg";	
+}
+if($hournow >= 06 and $hournow <= 08){
+	$partofday = "aeg püstitõusmiseks";
 }
 if($hournow >= 8 and $hournow <= 23){
 	$partofday = " aeg töötamiseks";
+}
+if($hournow >= 11 and $hournow < 12){
+	$partofday = "aeg teha paus, otsi toitu vms";
+}
+if($hournow >= 18 and $hournow <= 20){
+	$partofday = "aeg koju minekuks, aitab küll koolist tänaseks";
+}
+if($hournow >= 20 and $hournow <= 21){
+	$partofday = "aeg õhtutoidu tegemiseks";
 }
 // see märk näitab kommentaari "//"
 //vaatame semsetri kulgemist
