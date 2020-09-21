@@ -1,42 +1,10 @@
 <?php
  //var_dump($_POST);
  require("../../../../config.php");
- $database = "if20_tauri_2";
- if(isset($_POST["ideasubmit"]) and !empty($_POST["ideainput"])){
-	//loome andmebaasiga ühenduse, selleks ka database = minuga
-	$conn=new mysqli($serverhost, $serverusername, $serverpassword, $database);
-	//valmistan ette sql käsu, andmete kirjutamiseks
-	$stmt = $conn->prepare("INSERT INTO myideas (idea) VALUES (?)");
-	echo $conn->error;
-	//i = integer (int), d = decimal (float), s = string (ehk tekst)
-	$stmt->bind_param("s", $_POST["ideainput"]);
-	$stmt->execute();
-	$stmt->close();
-	$conn->close();
-	
-	//stmt statement
-	//conn prepare vahele tuleb kirjutada SQL keeles
-	//SQL on andmebaaside kasutamise keel 
- }
+ require("fnc_film.php");
  
- //loen nüüd andmebaasist infot 
- //! märk tähendab eitust. nagu ka pythonis != on not equal to
-$ideahtml= "";
-$conn=new mysqli($serverhost, $serverusername, $serverpassword, $database);
-$stmt= $conn->prepare("SELECT idea FROM myideas");
-//seon tulemuse muutajaga. kuna tulemuste arvu ei ole teada siis tuleb sellega arvestada.
-$stmt->bind_result($ideafromdb);
-//fromdb ehk from database 
-$stmt->execute();
-while($stmt->fetch()){
-	$ideahtml .= "<p>". $ideafromdb . "</p>";
-}
-$stmt->close();
-$conn->close();
-
 
 $username1 = "kuikb2 tauri";
-$username2 = "test";
 $fulltimenow = date("d.m.Y H:i:s");
 $hournow = date("H:i");
 $partofday = " lihtsalt aeg";
@@ -106,7 +74,10 @@ if($semesterstart > $today){
   if($fromsemesterstartdays > $semesterdurationdays){
 	  $semesterinfo = "Semester on läbi saanud!";
   }
-  $allfiles = scandir("vp_pics/");
+ 
+
+
+ $allfiles = scandir("vp_pics/");
   //echo $allfiles;
   //var_dump ($allfiles);
   $picfiles = array_slice($allfiles, 2);
@@ -121,8 +92,22 @@ if($semesterstart > $today){
 	  //<img src="../img/pildifail" alt="tekst">
 	 $imghtml .= '<img src="vp_pics/' .$picfiles[$i] . ' " alt="tallinna ülikool" >';
  }
-  require("header.php");
+  
+  /* for($i = 0;$i < $piccount; $i ++){
+	  //<img src="../img/pildifail" alt="tekst">
+	  $imghtml .= '<img src="../vp_pics/' .$picfiles[$i] .'" alt="Tallinna Ülikool">';
+  } */
+  //$randompicnum = mt_rand(0,($piccount - 1));
+  //$imghtml = '<img src="../vp_pics/' .$picfiles[$randompicnum] .'" alt="Tallinna Ülikool">';
+  $imghtml = '<img src="vp_pics/' .$picfiles[mt_rand(0,($piccount - 1))] .'" alt="tallinna Ülikool">';
+
+
+
+
+
+require("header.php");
 ?>
+
 
 
   <h1 style="color:#00BFFF";>TEST LEHT</h1> <img src= "https://raw.githubusercontent.com/Veebiprogrammeerimine-2020/ryhm-2/master/img/vp_logo_small.png" "width="256" heigh"128" title="banner" alt="lipp" >
@@ -138,7 +123,7 @@ if($semesterstart > $today){
   
   <p> see veebi leht on <a href="https://www.tlu.ee"> tähtis </a>  </p>
   
-  <p> Palun vaadake juhendid yle. juhendeid on 3-4tk ja r22givad yksteisele vastu </p>
+ 
   
   <p> Lehe avamise hetkel oli nädalapäev ja kuupäev ja kellaaeg: <?php echo $weekdaynameset[$weekdaynow - 1]. "," . $fulltimenow; ?> . </p>
   
@@ -146,16 +131,19 @@ if($semesterstart > $today){
   <p><?php echo $semesterinfo; ?></p>
   <p><?php echo "praegu on " . $weekdaynameset[$weekdaynow - 1] . "." ; ?></p>
   <img src="../img/vp_banner.png" alt="veebiprog tunni lipp">
+
   <hr>
   <?php echo $imghtml; ?>
   <hr>
   <form method="POST">
-  <label> Kirjutage oma esimene pähetulev mõte, kui esimene mõte ei sobi, kirjutage teine </label>
-  <input type="text" name="ideainput" placeholder="mõttekoht">
-  <input type="submit" name="ideasubmit" value="saada mõte teele!">
-  </form>
-  <hr>
-  <?php echo $ideahtml; ?>
+  <ul>
+  <li><a href="ideed.php">Idee sisestus</a></li>
+  <li><a href="list.php">Idee list</a></li>
+  <li><a href="filmlist.php">Filmid</a></li>
+  </ul>
+  <?php // ul tähendab unnumbered list. selle listi sisu tekst tuleb "p" asemel "li"?>
+  
+  
 </body>
 </html>
 
