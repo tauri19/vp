@@ -6,11 +6,11 @@ $inputerror = "";
 $filmhtml = "";
 //kas vajutati salvestus nuppu
 if(isset($_POST["filmsubmit"])){
-	if (empty($_POST["titleinput"]) or empty($_POST["genreinput"]) or empty($_POST(["studioinput"]) or empty ($_POST["directorinput"]) 
-	$inputerror .= "Osa sisestamata" 
+	if(empty($_POST["titleinput"]) or empty($_POST["genreinput"]) or empty($_POST(["studioinput"])) or empty ($_POST["directorinput"]))
+		$inputerror .= "Osa sisestamata";
 }
-if($_POST["yearinput"] < 1900 {
-	$inputerror = "Kontrolli aasta aega"
+if($_POST["yearinput"] < 1900) {
+	$inputerror = "Kontrolli aasta aega";
 }
 
 
@@ -18,7 +18,7 @@ if($_POST["yearinput"] < 1900 {
 if($storeinfo == 1){
 	$filmhtml = readfilms(1);
 } else { 
-	$filmhtml = "<p>Filmiinfo salvestamine ebaõnnestus</p>"
+	$filmhtml = "<p>Filmiinfo salvestamine ebaõnnestus</p>";
 }
 
 require("header.php");
